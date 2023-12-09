@@ -8,7 +8,9 @@
 <br><br>
 <h1>IPL Teams Analysis</h1>
 
-<form action="/team_record" method="get">
+<form action="/team_record" method="get" style ="border: 5px solid #082e52; padding: 20px; max-width: 400px; margin: auto">
+
+
     <label>IPL Team Name: </label>
     <select name="ipl_team_name">
         <option disabled selected >Pick a Team </option>
@@ -16,13 +18,12 @@
         <option>{{ i }}</option>
         {% endfor %}
     </select><br><br>
-    <input type="submit" value="Show Team Record" style="background-color: #325ca8; color: white;font-size: 16px;border: 2px solid #4CAF50;padding: 10px 20px">
+    <input type="submit" value="Show Team Record" style="background-color: #0a5ead; color: white;font-size: 16px;border: 2px solid #a2c3e8;padding: 10px 20px">
 </form>
 {% if message %}
     <p style="color:orange">{{ message }}</p>
-    {% endif %}
+{% endif %}
 {% if record %}
-
 {% for i in record %}
 <p>{{ i }} : {{ record[i] }}</p>
 {% endfor %}
