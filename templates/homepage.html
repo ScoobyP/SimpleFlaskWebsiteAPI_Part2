@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IPL Analysis Homepage</title>
+</head>
+<body align="center" style="background: url('https://ww2.freelogovectors.net/svg10/indian-premier-league-ipl-logo-freelogovectors.net_.svg') ; background-size:30% 300px; background-repeat: no-repeat ">
+<br><br>
+<h1>IPL Teams Analysis</h1>
+
+<form action="/team_record" method="get">
+    <label>IPL Team Name: </label>
+    <select name="ipl_team_name">
+        <option disabled selected >Pick a Team </option>
+        {% for i in teams %}
+        <option>{{ i }}</option>
+        {% endfor %}
+    </select><br><br>
+    <input type="submit" value="Show Team Record" style="background-color: #325ca8; color: white;font-size: 16px;border: 2px solid #4CAF50;padding: 10px 20px">
+</form>
+{% if message %}
+    <p style="color:orange">{{ message }}</p>
+    {% endif %}
+{% if record %}
+
+{% for i in record %}
+<p>{{ i }} : {{ record[i] }}</p>
+{% endfor %}
+{% endif %}
+</body>
+</html>
