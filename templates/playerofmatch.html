@@ -37,8 +37,8 @@
             background-color: #ddd;
             color: black;
         }
-        </style>
-    <title>IPL Teams' Analysis</title>
+    </style>
+    <title>IPL Player of Match</title>
 </head>
 <body style="text-align: center; background: url('https://ww2.freelogovectors.net/svg10/indian-premier-league-ipl-logo-freelogovectors.net_.svg') ; background-size:30% 300px; background-repeat: no-repeat ">
 <nav>
@@ -52,41 +52,55 @@
     </nav>
 <div class="content">
     <br><br>
-    <h1>IPL Teams' Analysis</h1>
+    <h1>IPL Player of Match</h1>
 
-    <form action="/team_record" method="get" style ="border: 5px solid #082e52; padding: 20px; max-width: 400px; margin: auto">
+    <form action="/pom_record" method="get" style ="border: 5px solid #082e52; padding: 20px; max-width: 400px; margin: auto">
 
 
-        <label>IPL Team Name: </label>
-        <select name="ipl_team_name" style="font-size: 21px">
-            <option disabled selected >Pick a Team </option>
-            {% for i in teams %}
+        <label>Player Name: </label>
+        <select name="pom_name" style="font-size: 21px">
+            <option disabled selected >Pick a Player </option>
+            {% for i in player_name %}
             <option>{{ i }}</option>
             {% endfor %}
         </select><br><br>
-        <input type="submit" value="Show Team Record" style="background-color: #0a5ead; color: white;font-size: 16px;border: 2px solid #a2c3e8;padding: 10px 20px">
+        <input type="submit" value="Show Player Record" style="background-color: #0a5ead; color: white;font-size: 16px;border: 2px solid #a2c3e8;padding: 10px 20px">
     </form>
+    <br><br>
+    {% if player1 %}
+    <p><b>Selected Player:</b> {{ player1 }} </p>
+    {% endif %}
     {% if message %}
         <p style="color:orange"><b>{{ message }}</b></p>
     {% endif %}
-    {% if record %}
+    {% if player_rec %}
     <br><br>
-    {% if team1 %}
-    <p><b>Selected Team:</b> {{ team1 }}</p>
-    {% endif %}
+
     <table  style="margin: auto; border: 5px solid #12498c">
 
-        {% for key, value in record.items() %}
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Season </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Against </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Batting Figure (Runs/Balls) </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Bowling Figure (Wkts/Runs) </th>
+
+
+        {% for key, value in player_rec.items() %}
             <tr>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><b>{{ key }}</b></td>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ value }}</td>
+
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ value['Season'] }}</td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ value['Against'] }}</td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ value['Batting Figure (Runs/Balls)'] }}</td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ value['Bowling Figure(Wkts/Runs)'] }}</td>
+
+
             </tr>
         {% endfor %}
     </table>
 
     {% endif %}
+
 </div>
-<br>
+
 <footer>
     <i>NOTE: Analysis provided is from data of season 2008 - 2022.</i>
 </footer>

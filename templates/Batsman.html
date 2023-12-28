@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #12498c;
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        nav li {
+            float: left;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+    <title>IPL Batsman Analysis</title>
+</head>
+<body style="text-align: center; background: url('https://ww2.freelogovectors.net/svg10/indian-premier-league-ipl-logo-freelogovectors.net_.svg') ; background-size:30% 300px; background-repeat: no-repeat ">
+<nav>
+        <ul>
+            <li><a href="/">Teams</a></li>
+            <li><a href="/all_batsmen">Batsman</a></li>
+            <li><a href="#services">Bowler</a></li>
+            <li><a href="/pom">Player of Match</a></li>
+            <li style="float: right"><a href="/download">Download</a></li>
+        </ul>
+    </nav>
+<div class="content">
+    <br><br>
+    <h1>IPL Batsman Overview</h1>
+
+    <form action="/batsman_record" method="get" style ="border: 5px solid #082e52; padding: 20px; max-width: 400px; margin: auto">
+
+
+        <label>Batsman Name: </label>
+        <select name="batter_name" style="font-size: 21px">
+            <option disabled selected >Pick a Batsman </option>
+            {% for i in batter_names %}
+            <option>{{ i }}</option>
+            {% endfor %}
+        </select><br><br>
+        <input type="submit" value="Show Batsman Record" style="background-color: #0a5ead; color: white;font-size: 16px;border: 2px solid #a2c3e8;padding: 10px 20px">
+    </form>
+    <br><br>
+    {% if batsman1 %}
+    <p><b>Selected Batsman:</b> {{ batsman1 }}</p>
+    {% endif %}
+    {% if message %}
+        <p style="color:orange"><b>{{ message }}</b></p>
+    {% endif %}
+    {% if batter_rec %}
+    <br><br>
+    <label><b> Record by Season</b> </label><br><br>
+    <table  style="margin: auto; border: 5px solid #12498c">
+
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> YEAR </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Average </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Total Runs </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Strike Rate </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> High Score </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Innings Played </th>
+
+
+        {% for key, value in batter_rec.items() %}
+            <tr>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><b>{{ key }}</b></td>
+
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Average'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['batsman_run'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Strike Rate'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Highest Match Score'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Innings'] }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% endif %}
+</div>
+<div class="content">
+    {% if against_rec %}
+    <br><br>
+    <label> <b> Record Against Playing Team</b> </label><br><br>
+    <table  style="margin: auto; border: 5px solid #12498c">
+
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> AGAINST TEAM</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Average </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Total Runs </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Strike Rate </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> High Score </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Innings Played </th>
+
+
+        {% for key, value in against_rec.items() %}
+            <tr>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><b>{{ key }}</b></td>
+
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Average'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['batsman_run'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Strike Rate'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Highest Match Score'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Innings'] }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% endif %}
+</div>
+<br>
+<footer>
+    <i>NOTE: Analysis provided is from data of season 2008 - 2022.</i>
+</footer>
+</body>
+</html>

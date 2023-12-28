@@ -37,8 +37,8 @@
             background-color: #ddd;
             color: black;
         }
-        </style>
-    <title>IPL Teams' Analysis</title>
+    </style>
+    <title>Download IPL Data Files</title>
 </head>
 <body style="text-align: center; background: url('https://ww2.freelogovectors.net/svg10/indian-premier-league-ipl-logo-freelogovectors.net_.svg') ; background-size:30% 300px; background-repeat: no-repeat ">
 <nav>
@@ -52,41 +52,18 @@
     </nav>
 <div class="content">
     <br><br>
-    <h1>IPL Teams' Analysis</h1>
+    <h1>Download Files</h1>
 
-    <form action="/team_record" method="get" style ="border: 5px solid #082e52; padding: 20px; max-width: 400px; margin: auto">
+    <a href ="/Users/ishanp/Downloads/ipl_deliveries.csv" download="EveryDeliveryinIPL.csv(30.2 MB)">
+    <button style="background-color: #0a5ead; color: white;font-size: 16px;border: 2px solid #a2c3e8;padding: 10px 20px">Download CSV File 1 (30.6 MB)</button>
+        </a>
+<br><br><br>
 
-
-        <label>IPL Team Name: </label>
-        <select name="ipl_team_name" style="font-size: 21px">
-            <option disabled selected >Pick a Team </option>
-            {% for i in teams %}
-            <option>{{ i }}</option>
-            {% endfor %}
-        </select><br><br>
-        <input type="submit" value="Show Team Record" style="background-color: #0a5ead; color: white;font-size: 16px;border: 2px solid #a2c3e8;padding: 10px 20px">
-    </form>
-    {% if message %}
-        <p style="color:orange"><b>{{ message }}</b></p>
-    {% endif %}
-    {% if record %}
-    <br><br>
-    {% if team1 %}
-    <p><b>Selected Team:</b> {{ team1 }}</p>
-    {% endif %}
-    <table  style="margin: auto; border: 5px solid #12498c">
-
-        {% for key, value in record.items() %}
-            <tr>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><b>{{ key }}</b></td>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ value }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-
-    {% endif %}
+    <a href ="/Users/ishanp/Downloads/IPL_Matches_2008_2022.csv" download="EveryIPLMatchUntil2022.csv(475 KB)">
+    <button style="background-color: #0a5ead; color: white;font-size: 16px;border: 2px solid #a2c3e8;padding: 10px 20px">Download CSV File 2 (475 KB)</button>
+        </a>
+<br><br><br>
 </div>
-<br>
 <footer>
     <i>NOTE: Analysis provided is from data of season 2008 - 2022.</i>
 </footer>
