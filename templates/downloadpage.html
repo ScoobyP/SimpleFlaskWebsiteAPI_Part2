@@ -54,12 +54,12 @@
     <br><br>
     <h1>Download Files</h1>
 
-    <a href ="/Users/ishanp/Downloads/ipl_deliveries.csv" download="EveryDeliveryinIPL.csv(30.2 MB)">
+    <a href="{{ url_for('static', filename='ipl_deliveries.csv') }}" download="EveryDeliveryInIPL_till2022.csv">
     <button style="background-color: #0a5ead; color: white;font-size: 16px;border: 2px solid #a2c3e8;padding: 10px 20px">Download CSV File 1 (30.6 MB)</button>
         </a>
 <br><br><br>
 
-    <a href ="/Users/ishanp/Downloads/IPL_Matches_2008_2022.csv" download="EveryIPLMatchUntil2022.csv(475 KB)">
+    <a href="{{ url_for('static', filename='IPL_Matches_2008_2022.csv') }}" download="All_IPLMatches_2008_2022.csv">
     <button style="background-color: #0a5ead; color: white;font-size: 16px;border: 2px solid #a2c3e8;padding: 10px 20px">Download CSV File 2 (475 KB)</button>
         </a>
 <br><br><br>
