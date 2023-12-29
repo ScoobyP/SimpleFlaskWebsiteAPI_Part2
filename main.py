@@ -47,8 +47,14 @@ def page_4():
         against_record = requests.get(f'http://127.0.0.1:5002/api/batsman_against_record?batter={batsman1}')
         bats_rec2 = against_record.json()["Batsman Against Record"]
 
-        if bats_rec1 and bats_rec2:
-            return render_template('Batsman.html', batter_rec=bats_rec1, against_rec=bats_rec2, batter_names=batter_name, batsman1=batsman1)
+        pom_record = requests.get(f'http://127.0.0.1:5002/api/POM_record?pom={batsman1}')
+        bats_rec3 = pom_record.json()["Player of Match Record"]
+
+        if bats_rec1 or bats_rec2:
+            if bats_rec3:
+                return render_template('Batsman.html', batter_rec=bats_rec1, against_rec=bats_rec2, pom_rec=bats_rec3, batter_names=batter_name, batsman1=batsman1)
+            else:
+                return render_template('Batsman.html', batter_rec=bats_rec1, against_rec=bats_rec2, batter_names=batter_name, batsman1=batsman1, pmessage='No Player of Match Record to Show')
         else:
             return render_template('Batsman.html', batter_names=batter_name, message='No Record To Show', batsman1=batsman1)
     else:

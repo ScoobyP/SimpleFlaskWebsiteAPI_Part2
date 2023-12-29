@@ -46,7 +46,7 @@
             <li><a href="/">Teams</a></li>
             <li><a href="/all_batsmen">Batsman</a></li>
             <li><a href="#services">Bowler</a></li>
-            <li><a href="/pom">Player of Match</a></li>
+
             <li style="float: right"><a href="/download">Download</a></li>
         </ul>
     </nav>
@@ -83,7 +83,7 @@
         <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Total Runs </th>
         <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Strike Rate </th>
         <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> High Score </th>
-        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Innings Played </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Innings Batted </th>
 
 
         {% for key, value in batter_rec.items() %}
@@ -112,7 +112,7 @@
         <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Total Runs </th>
         <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Strike Rate </th>
         <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> High Score </th>
-        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Innings Played </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Innings Batted</th>
 
 
         {% for key, value in against_rec.items() %}
@@ -131,6 +131,41 @@
     {% endif %}
 </div>
 <br>
+<div class="content">
+    <br><br>
+
+
+    {% if pom_rec %}
+
+    <label> <b> Player of Match Record </b> </label><br><br>
+    <table  style="margin: auto; border: 5px solid #12498c">
+
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Season </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Against </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Batting Figure (Runs/Balls) </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Bowling Figure (Wkts/Runs) </th>
+
+
+        {% for key, value in pom_rec.items() %}
+            <tr>
+
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ value['Season'] }}</td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ value['Against'] }}</td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ value['Batting Figure (Runs/Balls)'] }}</td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ value['Bowling Figure(Wkts/Runs)'] }}</td>
+
+
+            </tr>
+        {% endfor %}
+
+    {% elif pmessage %}
+        <label> <b> Player of Match Record </b> </label>
+        <p style="color:orange"><b>{{ pmessage }}</b></p>
+
+    {% endif %}
+    </table>
+</div>
+<br><br>
 <footer>
     <i>NOTE: Analysis provided is from data of season 2008 - 2022.</i>
 </footer>
