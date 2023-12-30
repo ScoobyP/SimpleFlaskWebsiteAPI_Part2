@@ -38,63 +38,67 @@
             color: black;
         }
     </style>
-    <title>IPL Batsman Analysis</title>
+    <title>IPL Bowler Analysis</title>
 </head>
 <body style="text-align: center; background: url('https://ww2.freelogovectors.net/svg10/indian-premier-league-ipl-logo-freelogovectors.net_.svg') ; background-size:30% 300px; background-repeat: no-repeat ">
 <nav>
         <ul>
             <li><a href="/">Teams</a></li>
             <li><a href="/all_batsmen">Batsman</a></li>
-            <li><a href="/all_bowlers">Bowler</a></li>
+            <li><a href="#services">Bowler</a></li>
 
             <li style="float: right"><a href="/download">Download</a></li>
         </ul>
     </nav>
 <div class="content">
     <br><br>
-    <h1>IPL Batsman Overview</h1>
+    <h1>IPL Bowler Overview</h1>
 
-    <form action="/batsman_record" method="get" style ="border: 5px solid #082e52; padding: 20px; max-width: 400px; margin: auto">
+    <form action="/bowler_record" method="get" style ="border: 5px solid #082e52; padding: 20px; max-width: 400px; margin: auto">
 
 
-        <label>Batsman Name: </label>
-        <select name="batter_name" style="font-size: 21px">
-            <option disabled selected >Pick a Batsman </option>
-            {% for i in batter_names %}
+        <label>Bowler Name: </label>
+        <select name="bowler_name" style="font-size: 21px">
+            <option disabled selected >Pick a Bowler </option>
+            {% for i in bowler_name %}
             <option>{{ i }}</option>
             {% endfor %}
         </select><br><br>
-        <input type="submit" value="Show Batsman Record" style="background-color: #0a5ead; color: white;font-size: 16px;border: 2px solid #a2c3e8;padding: 10px 20px">
+        <input type="submit" value="Show Bowler Record" style="background-color: #0a5ead; color: white;font-size: 16px;border: 2px solid #a2c3e8;padding: 10px 20px">
     </form>
     <br><br>
-    {% if batsman1 %}
-    <p><h2>Batsman: {{ batsman1 }}</h2></p>
+    {% if bowler1 %}
+    <p><h2>Bowler : {{ bowler1 }}</h2></p>
     {% endif %}
     {% if message %}
         <p style="color:orange"><b>{{ message }}</b></p>
     {% endif %}
-    {% if batter_rec %}
+    {% if season_rec %}
     <br><br>
     <label><b> Record by Season</b> </label><br><br>
     <table  style="margin: auto; border: 5px solid #12498c">
 
         <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> YEAR </th>
-        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Average </th>
-        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Total Runs </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Total Wkts</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">  Average </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">  Economy </th>
         <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Strike Rate </th>
-        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> High Score </th>
-        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Innings Batted </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Maiden Over(s) </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Overs Bowled</th>
 
 
-        {% for key, value in batter_rec.items() %}
+        {% for key, value in season_rec.items() %}
             <tr>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><b>{{ key }}</b></td>
 
+
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Season'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Wicket by Bowler'] }} </td>
                 <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Average'] }} </td>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['batsman_run'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Economy'] }} </td>
                 <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Strike Rate'] }} </td>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Highest Match Score'] }} </td>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Innings'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['maiden overs'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Overs'] }} </td>
+
             </tr>
         {% endfor %}
     </table>
