@@ -112,22 +112,24 @@
     <table  style="margin: auto; border: 5px solid #12498c">
 
         <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> AGAINST TEAM</th>
-        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Average </th>
-        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Total Runs </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Total Wkts</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">  Average </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">  Economy </th>
         <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Strike Rate </th>
-        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> High Score </th>
-        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Innings Batted</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Maiden Over(s) </th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> Overs Bowled</th>
 
 
         {% for key, value in against_rec.items() %}
             <tr>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><b>{{ key }}</b></td>
-
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Against'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Wicket by Bowler'] }} </td>
                 <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Average'] }} </td>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['batsman_run'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Economy'] }} </td>
                 <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Strike Rate'] }} </td>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Highest Match Score'] }} </td>
-                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Innings'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['maiden overs'] }} </td>
+                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"> {{ value['Overs'] }} </td>
+
             </tr>
         {% endfor %}
     </table>

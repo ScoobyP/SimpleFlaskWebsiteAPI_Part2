@@ -107,14 +107,17 @@ def page_10():
         season_record = requests.get(f'http://127.0.0.1:5002/api/bowling_rec?bowler={bowler1}')
         bowler_rec1 = season_record.json()["Bowler Record by Season"]
 
+        against_record = requests.get(f'http://127.0.0.1:5002/api/aga_bowling_rec?bowl={bowler1}')
+        bowler_rec2 = against_record.json()["Bowler Record Against Team"]
+
         pom_record = requests.get(f'http://127.0.0.1:5002/api/POM_record?pom={bowler1}')
         bats_rec3 = pom_record.json()["Player of Match Record"]
 
-        if bowler_rec1:# or bowler_rec2:
+        if bowler_rec1 or bowler_rec2:
             if bats_rec3:
-                return render_template('Bowlers.html', season_rec=bowler_rec1, pom_rec=bats_rec3, bowler_name=bowler_names, bowler1=bowler1)
+                return render_template('Bowlers.html', season_rec=bowler_rec1, against_rec=bowler_rec2,pom_rec=bats_rec3, bowler_name=bowler_names, bowler1=bowler1)
             else:
-                return render_template('Bowlers.html', season_rec=bowler_rec1,bowler_name=bowler_names, bowler1=bowler1, pmessage='No Record to Show')
+                return render_template('Bowlers.html', season_rec=bowler_rec1, against_rec=bowler_rec2, bowler_name=bowler_names, bowler1=bowler1, pmessage='No Record to Show')
     else:
         return render_template('Bowlers.html', bowler_name=bowler_names, message='Please Select a Bowler')
 
